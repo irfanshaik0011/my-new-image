@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery - Shaik Irfan</title>
+
+    <!-- Fonts & CSS -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:200,400,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="gallery.css" />
+    <style>
+      body {
+        background: #0d0d0d;
+        font-family: 'Poppins', sans-serif;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+      }
+
+      .gallery-section {
+        padding: 50px 20px;
+        text-align: center;
+      }
+
+      .gallery-title {
+        font-size: 2.5rem;
+        color: #f1c40f; /* Yellow */
+        margin-bottom: 10px;
+      }
+
+      .gallery-subtitle {
+        font-size: 1.2rem;
+        color: #ffffff; /* White */
+        margin-bottom: 30px;
+      }
+
+      #image-gallery {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      #current-image {
+        width: 100%;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        margin-bottom: 20px;
+      }
+
+      #image-thumbs {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .thumb {
+        width: 90px;
+        height: 90px;
+        object-fit: cover;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+
+      .thumb:hover {
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+  <body>
+    <section class="gallery-section">
+      <div class="container">
+        <h2 class="gallery-title">Image Gallery</h2>
+        <p class="gallery-subtitle">Select a thumbnail to view the image</p>
+        <div id="image-gallery">
+          <img id="current-image" src="images/image1.jpg" alt="Image 1" />
+          <div id="image-thumbs"></div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const imageThumbs = document.getElementById("image-thumbs");
+      const currentImage = document.getElementById("current-image");
+
+      const imageCount = 17; // Load only 6 images
+
+      for (let i = 1; i <= imageCount; i++) {
+        const thumb = document.createElement("img");
+        thumb.src = `images/image${i}.jpg`;
+        thumb.alt = `Image ${i}`;
+        thumb.classList.add("thumb");
+        imageThumbs.appendChild(thumb);
+
+        thumb.addEventListener("click", function () {
+          currentImage.src = this.src;
+          currentImage.alt = this.alt;
+        });
+      }
+    </script>
+  </body>
+</html>
